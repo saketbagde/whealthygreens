@@ -1,177 +1,55 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>WHealthy Greens — Premium Microgreens</title>
-  <meta name="description" content="WHealthy Greens — Fresh, locally-grown microgreens delivered live. Non-GMO, chlorine-free, food-grade trays." />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --accent:#2e7d32;
-      --accent-dark:#1b5e20;
-      --gold:#c59b2a;
-      --muted:#6b7280;
-      --bg:#fbfff9;
-      --card:#ffffff;
-      --radius:14px;
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;background:var(--bg);font-family:'Poppins',system-ui,Arial,sans-serif;color:#0f172a;-webkit-font-smoothing:antialiased}
-    a{color:inherit}
-    /* Header / Hero */
-    .hero{position:relative;min-height:56vh;display:flex;align-items:center;justify-content:center;overflow:hidden;border-bottom-left-radius:30px;border-bottom-right-radius:30px}
-    .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(12,53,22,0.18),rgba(12,53,22,0.55));mix-blend-mode:multiply;pointer-events:none}
-    .hero-img{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;filter:contrast(1.03) saturate(1.02)}
-    .hero-inner{position:relative;z-index:2;max-width:1100px;padding:48px;display:flex;gap:36px;align-items:center;color:white}
-    .brand{flex:1;min-width:260px}
-    .logo{display:flex;align-items:center;gap:14px}
-    .logo-mark{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,var(--accent) 0%, #66bb6a 100%);display:grid;place-items:center;box-shadow:0 6px 22px rgba(16,78,26,0.24)}
-    .logo-mark svg{width:34px;height:34px;fill:white;opacity:0.98}
-    .brand-title{font-family:'Playfair Display',serif;font-size:28px;line-height:1;color:white}
-    .brand-sub{font-size:14px;color:rgba(255,255,255,0.9);margin-top:6px}
-    .cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:999px;font-weight:600;text-decoration:none;box-shadow:0 6px 18px rgba(16,78,26,0.16);transition:transform .16s, box-shadow .16s}
-    .btn-cta{background:linear-gradient(90deg,var(--accent),var(--accent-dark));color:white}
-    .btn-ghost{background:rgba(255,255,255,0.14);color:white;border:1px solid rgba(255,255,255,0.12)}
-    .btn:hover{transform:translateY(-4px)}
-    .hero-media{flex:1;display:flex;justify-content:center}
-    .hero-card{background:var(--card);border-radius:18px;padding:12px;width:360px;box-shadow:0 12px 36px rgba(4,22,12,0.18);overflow:hidden}
-    .hero-card img{width:100%;height:260px;object-fit:cover;border-radius:12px;display:block}
-    .hero-card .info{padding:12px;text-align:left}
-    .hero-card .info h4{margin:0 0 6px 0;color:#0b3f24;font-weight:700}
-    .hero-card .info p{margin:0;color:var(--muted);font-size:14px}
-    /* content */
-    main{max-width:1100px;margin:-50px auto 60px;padding:0 20px;display:grid;gap:40px}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .card{background:var(--card);border-radius:12px;padding:18px;box-shadow:0 8px 26px rgba(15,23,42,0.06);text-align:center}
-    .card h3{margin:12px 0 6px;color:#0b3f24}
-    .card p{color:var(--muted);font-size:14px}
-    .features{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-    .feature{display:flex;gap:12px;background:linear-gradient(180deg,rgba(255,255,255,0.6),rgba(245,255,245,0.8));padding:16px;border-radius:10px;align-items:flex-start}
-    .feature svg{width:34px;height:34px;flex:0 0 34px;color:var(--accent)}
-    .varieties{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:18px}
-    .var-card{border-radius:12px;overflow:hidden;box-shadow:0 10px 30px rgba(15,23,42,0.06);background:#fff}
-    .var-card img{width:100%;height:140px;object-fit:cover;display:block}
-    .var-card .meta{padding:12px;text-align:center}
-    .var-card .meta h4{margin:6px 0;color:#064e2a}
-    /* contact */
-    .contact-block{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:20px;border-radius:12px;background:linear-gradient(180deg,#f5fff5,#eaf9ea);box-shadow:0 12px 32px rgba(16,78,26,0.06)}
-    .contact-left h3{margin:0;color:#083f23}
-    .contact-btns{display:flex;gap:12px;flex-wrap:wrap}
-    .chip{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:999px;background:white;border:1px solid #f0f4f0;font-weight:600}
-    footer{max-width:1100px;margin:40px auto;padding:30px 20px;text-align:center;color:#475569;font-size:14px}
-    /* responsive */
-    @media(max-width:900px){.hero-inner{flex-direction:column;padding:28px}.grid{grid-template-columns:repeat(2,1fr)}.features{grid-template-columns:1fr}.hero-card{width:100%}.hero{min-height:56vh}}
-    @media(max-width:560px){.grid{grid-template-columns:1fr}.hero{min-height:50vh}.brand-title{font-size:22px}}
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <!-- HERO -->
-  <header class="hero" role="banner">
-    <!-- Replace this URL with your uploaded banner image if you have a public link -->
-    <img class="hero-img" src="https://images.unsplash.com/photo-1524594154904-2e32b4b6a4a5?auto=format&fit=crop&w=1600&q=80" alt="Microgreens banner">
-    <div class="hero-inner">
-      <div class="brand">
-        <div class="logo" aria-label="WHealthy Greens logo">
-          <div class="logo-mark" aria-hidden>
-            <!-- leaf icon -->
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2s6 3 6 9-6 11-6 11S6 14 6 8s6-6 6-6z"/></svg>
-          </div>
-          <div>
-            <div class="brand-title">WHealthy Greens</div>
-            <div class="brand-sub">Nature's Tiny Powerhouse • Fresh microgreens delivered live</div>
-          </div>
-        </div>
-
-        <div class="cta">
-          <a class="btn btn-cta" href="https://wa.me/919022172336" target="_blank" rel="noreferrer">💬 Order on WhatsApp</a>
-          <a class="btn btn-ghost" href="https://www.instagram.com/whealthygreens?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer">📷 Follow on Instagram</a>
-        </div>
-        <p style="margin-top:12px;color:rgba(255,255,255,0.88);max-width:420px">Non‑GMO seeds • Chlorine‑free water • Food‑grade trays • Weekly delivery</p>
-      </div>
-
-      <div class="hero-media">
-        <div class="hero-card" role="region" aria-label="Featured microgreen">
-          <img src="https://images.unsplash.com/photo-1615485739445-59ad949d1359?auto=format&fit=crop&w=800&q=80" alt="Fresh microgreens">
-          <div class="info">
-            <h4>Fresh Clover & Microgreen Mix</h4>
-            <p>Harvested and delivered live — perfect for salads, smoothies & gourmet plating.</p>
-          </div>
-        </div>
-      </div>
-    </div>
+  <header class="hero">
+    <img src="https://i.postimg.cc/T20wLc87/IMG-20250905-WA0003-1.jpg" alt="WHealthy Greens Banner" class="banner">
+    <h1>WHealthy Greens</h1>
+    <p>Nature’s Tiny Powerhouse — Premium Microgreens</p>
+    <a href="https://wa.me/919022172336" class="btn whatsapp">Order on WhatsApp</a>
+    <a href="https://www.instagram.com/whealthygreens" class="btn insta">Follow on Instagram</a>
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main>
+  <section class="about">
+    <h2>Why Choose WHealthy Greens?</h2>
+    <div class="features">
+      <div class="card">🌱 Locally Grown — Delivered live</div>
+      <div class="card">🌾 Non-GMO Seeds — Trusted quality</div>
+      <div class="card">💧 Chlorine-Free Water — Pure & safe</div>
+      <div class="card">🥗 Food-Grade Trays — Hygienic growth</div>
+    </div>
+  </section>
 
-    <!-- WHY CHOOSE US -->
-    <section aria-labelledby="why">
-      <h2 id="why">Why Choose WHealthy Greens?</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Locally Grown</h3>
-          <p>We grow locally to keep produce fresh and reduce transit time.</p>
-        </div>
-        <div class="card">
-          <h3>Non-GMO Seeds</h3>
-          <p>Sourced from trusted suppliers for consistent quality.</p>
-        </div>
-        <div class="card">
-          <h3>Chlorine-Free Water</h3>
-          <p>We use pure water to ensure purity and flavor in every tray.</p>
-        </div>
-      </div>
-    </section>
+  <section class="benefits">
+    <h2>Benefits of Eating Microgreens</h2>
+    <ul>
+      <li>⚡ Powerbomb of energy & nutrients</li>
+      <li>💊 Rich in vitamins, minerals & anti-inflammatory</li>
+      <li>💚 Helps lower blood pressure</li>
+      <li>🌀 Detoxifies naturally</li>
+    </ul>
+  </section>
 
-    <!-- FEATURES -->
-    <section aria-labelledby="features">
-      <h2 id="features">Benefits of Microgreens</h2>
-      <div class="features">
-        <div class="feature"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2s6 3 6 9-6 11-6 11S6 14 6 8s6-6 6-6z"/></svg><div><strong>High in Nutrients</strong><div style="color:var(--muted);font-size:14px;margin-top:6px">Packed with vitamins, minerals & antioxidants.</div></div></div>
-        <div class="feature"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2s6 3 6 9-6 11-6 11S6 14 6 8s6-6 6-6z"/></svg><div><strong>Supports Immunity</strong><div style="color:var(--muted);font-size:14px;margin-top:6px">Helps reduce inflammation and supports overall health.</div></div></div>
-        <div class="feature"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2s6 3 6 9-6 11-6 11S6 14 6 8s6-6 6-6z"/></svg><div><strong>Better Flavor</strong><div style="color:var(--muted);font-size:14px;margin-top:6px">Concentrated flavor that enriches any dish.</div></div></div>
-        <div class="feature"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2s6 3 6 9-6 11-6 11S6 14 6 8s6-6 6-6z"/></svg><div><strong>Eco-Friendly</strong><div style="color:var(--muted);font-size:14px;margin-top:6px">Low water usage, minimal footprint.</div></div></div>
-      </div>
-    </section>
-
-    <!-- VARIETIES -->
-    <section aria-labelledby="varieties">
-      <h2 id="varieties">Our Varieties</h2>
-      <div class="varieties">
-        <div class="var-card"><img src="https://images.unsplash.com/photo-1592928306050-0b6be6fd0b21?auto=format&fit=crop&w=800&q=80" alt="Clover"><div class="meta"><h4>Clover</h4><p style="color:var(--muted);font-size:13px;margin:6px 0 0">Mild, slightly sweet — great for salads.</p></div></div>
-        <div class="var-card"><img src="https://images.unsplash.com/photo-1592532514450-6e6b7f6a9f3e?auto=format&fit=crop&w=800&q=80" alt="Alfalfa"><div class="meta"><h4>Alfalfa</h4><p style="color:var(--muted);font-size:13px;margin:6px 0 0">Classic crunch for sandwiches.</p></div></div>
-        <div class="var-card"><img src="https://images.unsplash.com/photo-1589927986089-35812388d1a6?auto=format&fit=crop&w=800&q=80" alt="Radish"><div class="meta"><h4>Radish</h4><p style="color:var(--muted);font-size:13px;margin:6px 0 0">Peppery, colorful and bold.</p></div></div>
-        <div class="var-card"><img src="https://images.unsplash.com/photo-1622344475526-1a62f7b3a6f6?auto=format&fit=crop&w=800&q=80" alt="Amaranth"><div class="meta"><h4>Amaranth</h4><p style="color:var(--muted);font-size:13px;margin:6px 0 0">Elegant garnish, delicate texture.</p></div></div>
-        <div class="var-card"><img src="https://images.unsplash.com/photo-1604152135912-04a89bdb8ac6?auto=format&fit=crop&w=800&q=80" alt="Chia"><div class="meta"><h4>Chia</h4><p style="color:var(--muted);font-size:13px;margin:6px 0 0">Nutrient-dense and subtle flavored.</p></div></div>
-        <div class="var-card"><img src="https://images.unsplash.com/photo-1589198336802-f29702c7a3a3?auto=format&fit=crop&w=800&q=80" alt="Fenugreek"><div class="meta"><h4>Fenugreek</h4><p style="color:var(--muted);font-size:13px;margin:6px 0 0">Aromatic & traditional favorite.</p></div></div>
-      </div>
-    </section>
-
-    <!-- CONTACT / CTA -->
-    <section aria-labelledby="contact-section">
-      <div class="contact-block">
-        <div class="contact-left">
-          <h3 id="contact-section">Ready for weekly delivery?</h3>
-          <p style="color:var(--muted);margin-top:8px">Get fresh, nutrient-rich microgreens delivered to your home or restaurant.</p>
-        </div>
-        <div class="contact-btns">
-          <a class="chip" href="https://wa.me/919022172336" target="_blank" rel="noreferrer">💬 WhatsApp: +91 90221 72336</a>
-          <a class="chip" href="mailto:whealthymicrogreens@gmail.com">✉️ Email Us</a>
-          <a class="chip" href="https://www.instagram.com/whealthygreens?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer">📷 Instagram</a>
-        </div>
-      </div>
-    </section>
-
-  </main>
+  <section class="gallery">
+    <h2>Our Microgreens</h2>
+    <div class="grid">
+      <img src="images/microgreens1.jpg" alt="Clover Microgreens">
+      <img src="images/microgreens2.jpg" alt="Alfalfa Microgreens">
+      <img src="images/microgreens3.jpg" alt="Radish Microgreens">
+      <img src="images/microgreens4.jpg" alt="Amaranth Microgreens">
+      <img src="images/microgreens5.jpg" alt="Chia Microgreens">
+      <img src="images/microgreens6.jpg" alt="Fenugreek Microgreens">
+    </div>
+  </section>
 
   <footer>
-    <div style="margin-bottom:8px;color:#0b3f24;font-weight:700">WHealthy Greens</div>
-    <div style="color:var(--muted);font-size:13px">© 2025 WHealthy Greens — Fresh, Local & Healthy. All rights reserved.</div>
+    <p>📞 +91 90221 72336 | 📧 whealthymicrogreens@gmail.com</p>
+    <p>© 2025 WHealthy Greens. All Rights Reserved.</p>
   </footer>
-
 </body>
 </html>
